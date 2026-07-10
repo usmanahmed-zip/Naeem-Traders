@@ -1,0 +1,2461 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Naeem Traders - Your Trusted Electronics Store. Genuine products, affordable prices, home delivery and installation support." />
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%230A6CFF'/%3E%3Cpath fill='%23ffffff' d='M32 8L10 19v26l22 11 22-11V19L32 8zm0 5.6l17.4 8.7L32 30.5 14.6 22.3 32 13.6zM13 24.9l16 8v17.4l-16-8V24.9zm38 0v17.4l-16 8V32.9l16-8z'/%3E%3C/svg%3E" />
+    <title>Naeem Traders – Your Trusted Electronics Store</title>
+    <style>
+        /* ============================================================
+           RESET & BASE
+        ============================================================ */
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        html {
+            scroll-behavior: smooth;
+            font-size: 16px;
+        }
+        body {
+            font-family: 'Segoe UI', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+            background: #fff;
+            color: #1a1a2e;
+            line-height: 1.6;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            object-fit: cover;
+            width: 100%;
+        }
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+        ul {
+            list-style: none;
+        }
+        button {
+            cursor: pointer;
+            border: none;
+            background: none;
+            font-family: inherit;
+        }
+
+        /* ============================================================
+           CSS VARIABLES
+        ============================================================ */
+        :root {
+            --blue: #0A6CFF;
+            --blue-dark: #0050cc;
+            --blue-light: #e8f0ff;
+            --charcoal: #1a1a2e;
+            --gray: #6b7280;
+            --gray-light: #f4f6f9;
+            --gray-border: #e5e7eb;
+            --white: #ffffff;
+            --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.07);
+            --shadow-md: 0 8px 32px rgba(0, 0, 0, 0.10);
+            --shadow-lg: 0 20px 60px rgba(0, 0, 0, 0.13);
+            --radius: 16px;
+            --radius-sm: 10px;
+            --transition: 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        /* ============================================================
+           SCROLL ANIMATIONS
+        ============================================================ */
+        .reveal {
+            opacity: 0;
+            transform: translateY(60px) scale(0.9);
+            transition: opacity 0.7s cubic-bezier(0.34, 1.56, 0.64, 1),
+                transform 0.7s cubic-bezier(0.34, 1.56, 0.64, 1);
+            will-change: opacity, transform;
+        }
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+        }
+        .reveal-left {
+            opacity: 0;
+            transform: translateX(-70px) scale(0.9) rotate(-2deg);
+            transition: opacity 0.7s cubic-bezier(0.34, 1.56, 0.64, 1),
+                transform 0.7s cubic-bezier(0.34, 1.56, 0.64, 1);
+            will-change: opacity, transform;
+        }
+        .reveal-left.visible {
+            opacity: 1;
+            transform: translateX(0) scale(1) rotate(0deg);
+        }
+        .reveal-right {
+            opacity: 0;
+            transform: translateX(70px) scale(0.9) rotate(2deg);
+            transition: opacity 0.7s cubic-bezier(0.34, 1.56, 0.64, 1),
+                transform 0.7s cubic-bezier(0.34, 1.56, 0.64, 1);
+            will-change: opacity, transform;
+        }
+        .reveal-right.visible {
+            opacity: 1;
+            transform: translateX(0) scale(1) rotate(0deg);
+        }
+        .reveal-zoom {
+            opacity: 0;
+            transform: scale(0.65) translateY(24px);
+            transition: opacity 0.6s cubic-bezier(0.34, 1.56, 0.64, 1),
+                transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+            will-change: opacity, transform;
+        }
+        .reveal-zoom.visible {
+            opacity: 1;
+            transform: scale(1) translateY(0);
+        }
+        .d1 {
+            transition-delay: 0.05s;
+        }
+        .d2 {
+            transition-delay: 0.13s;
+        }
+        .d3 {
+            transition-delay: 0.21s;
+        }
+        .d4 {
+            transition-delay: 0.29s;
+        }
+        .d5 {
+            transition-delay: 0.37s;
+        }
+        .d6 {
+            transition-delay: 0.45s;
+        }
+        .d7 {
+            transition-delay: 0.53s;
+        }
+        .d8 {
+            transition-delay: 0.61s;
+        }
+
+        /* ============================================================
+           NAVBAR
+        ============================================================ */
+        #navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            padding: 0 2rem;
+            height: 68px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: rgba(255, 255, 255, 0);
+            backdrop-filter: blur(0px);
+            transition: background 0.4s, backdrop-filter 0.4s, box-shadow 0.4s;
+        }
+        #navbar.scrolled {
+            background: rgba(255, 255, 255, 0.92);
+            backdrop-filter: blur(18px);
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.09);
+        }
+        .nav-brand {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--charcoal);
+            letter-spacing: -0.3px;
+        }
+        .nav-brand span {
+            color: var(--blue);
+        }
+        .nav-brand-icon {
+            width: 38px;
+            height: 38px;
+            background: var(--blue);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .nav-brand-icon svg {
+            width: 22px;
+            height: 22px;
+            fill: #fff;
+        }
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+        }
+        .nav-links a {
+            font-size: 0.92rem;
+            font-weight: 500;
+            color: var(--gray);
+            transition: color var(--transition);
+            position: relative;
+            padding-bottom: 2px;
+        }
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--blue);
+            transition: width var(--transition);
+            border-radius: 2px;
+        }
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: var(--blue);
+        }
+        .nav-links a:hover::after,
+        .nav-links a.active::after {
+            width: 100%;
+        }
+        .nav-cta {
+            background: var(--blue);
+            color: #fff !important;
+            padding: 8px 20px;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 0.88rem;
+            transition: background var(--transition), transform var(--transition), box-shadow var(--transition) !important;
+        }
+        .nav-cta::after {
+            display: none !important;
+        }
+        .nav-cta:hover {
+            background: var(--blue-dark) !important;
+            transform: translateY(-1px);
+            box-shadow: 0 6px 20px rgba(10, 108, 255, 0.35) !important;
+        }
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            padding: 6px;
+            cursor: pointer;
+        }
+        .hamburger span {
+            display: block;
+            width: 24px;
+            height: 2px;
+            background: var(--charcoal);
+            border-radius: 2px;
+            transition: var(--transition);
+        }
+        .hamburger.open span:nth-child(1) {
+            transform: translateY(7px) rotate(45deg);
+        }
+        .hamburger.open span:nth-child(2) {
+            opacity: 0;
+        }
+        .hamburger.open span:nth-child(3) {
+            transform: translateY(-7px) rotate(-45deg);
+        }
+        .mobile-menu {
+            display: none;
+            position: fixed;
+            top: 68px;
+            left: 0;
+            right: 0;
+            background: #fff;
+            padding: 1.5rem 2rem 2rem;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.12);
+            z-index: 999;
+            transform: translateY(-10px);
+            opacity: 0;
+            transition: opacity 0.3s, transform 0.3s;
+            pointer-events: none;
+        }
+        .mobile-menu.open {
+            display: block;
+            opacity: 1;
+            transform: translateY(0);
+            pointer-events: all;
+        }
+        .mobile-menu a {
+            display: block;
+            padding: 12px 0;
+            font-size: 1rem;
+            font-weight: 500;
+            color: var(--charcoal);
+            border-bottom: 1px solid var(--gray-border);
+            transition: color var(--transition), padding-left var(--transition);
+        }
+        .mobile-menu a:hover {
+            color: var(--blue);
+            padding-left: 8px;
+        }
+        .mobile-menu a:last-child {
+            border-bottom: none;
+        }
+
+        /* ============================================================
+           HERO
+        ============================================================ */
+        #hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+            background: linear-gradient(135deg, #0a0f2e 0%, #0d1b5e 50%, #0A6CFF 100%);
+        }
+        .hero-bg {
+            position: absolute;
+            inset: 0;
+            overflow: hidden;
+            pointer-events: none;
+        }
+        .hero-shape {
+            position: absolute;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.04);
+            animation: float 8s ease-in-out infinite;
+            will-change: transform;
+        }
+        .hero-shape:nth-child(1) {
+            width: 600px;
+            height: 600px;
+            top: -200px;
+            right: -150px;
+            animation-delay: 0s;
+        }
+        .hero-shape:nth-child(2) {
+            width: 400px;
+            height: 400px;
+            bottom: -100px;
+            left: -100px;
+            animation-delay: 2s;
+            background: rgba(255, 255, 255, 0.03);
+        }
+        .hero-shape:nth-child(3) {
+            width: 250px;
+            height: 250px;
+            top: 30%;
+            right: 20%;
+            animation-delay: 4s;
+            background: rgba(10, 108, 255, 0.15);
+        }
+        .hero-shape:nth-child(4) {
+            width: 150px;
+            height: 150px;
+            top: 60%;
+            left: 15%;
+            animation-delay: 1s;
+            background: rgba(255, 255, 255, 0.06);
+        }
+        @media (prefers-reduced-motion: no-preference) {
+            @keyframes float {
+                0%,
+                100% {
+                    transform: translateY(0) scale(1);
+                }
+                50% {
+                    transform: translateY(-25px) scale(1.02);
+                }
+            }
+        }
+        .hero-grid-line {
+            position: absolute;
+            inset: 0;
+            background-image: linear-gradient(rgba(255, 255, 255, 0.04) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
+            background-size: 60px 60px;
+        }
+        .hero-inner {
+            position: relative;
+            z-index: 2;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 120px 2rem 80px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            align-items: center;
+            gap: 4rem;
+        }
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: rgba(10, 108, 255, 0.25);
+            border: 1px solid rgba(10, 108, 255, 0.4);
+            color: #7bb3ff;
+            font-size: 0.8rem;
+            font-weight: 600;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            padding: 6px 14px;
+            border-radius: 50px;
+            margin-bottom: 1.5rem;
+            opacity: 0;
+            animation: fadeUp 0.8s 0.2s forwards;
+        }
+        .hero-badge::before {
+            content: '';
+            width: 6px;
+            height: 6px;
+            background: #0A6CFF;
+            border-radius: 50%;
+            box-shadow: 0 0 8px #0A6CFF;
+        }
+        .hero-title {
+            font-size: clamp(2.8rem, 5vw, 4.5rem);
+            font-weight: 800;
+            color: #fff;
+            line-height: 1.08;
+            letter-spacing: -1.5px;
+            margin-bottom: 1.2rem;
+            opacity: 0;
+            animation: fadeUp 0.8s 0.35s forwards;
+        }
+        .hero-title span {
+            background: linear-gradient(90deg, #4d9fff, #0A6CFF, #a78bfa);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .hero-sub {
+            font-size: 1.15rem;
+            color: rgba(255, 255, 255, 0.72);
+            margin-bottom: 2.2rem;
+            line-height: 1.7;
+            max-width: 480px;
+            opacity: 0;
+            animation: fadeUp 0.8s 0.5s forwards;
+        }
+        .hero-btns {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            opacity: 0;
+            animation: fadeUp 0.8s 0.65s forwards;
+        }
+        .btn-primary {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: var(--blue);
+            color: #fff;
+            font-weight: 700;
+            font-size: 1rem;
+            padding: 15px 32px;
+            border-radius: 50px;
+            transition: background var(--transition), transform var(--transition), box-shadow var(--transition);
+            box-shadow: 0 4px 24px rgba(10, 108, 255, 0.45);
+        }
+        .btn-primary:hover {
+            background: var(--blue-dark);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 36px rgba(10, 108, 255, 0.55);
+        }
+        .btn-secondary {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.25);
+            color: #fff;
+            font-weight: 600;
+            font-size: 1rem;
+            padding: 15px 32px;
+            border-radius: 50px;
+            transition: background var(--transition), transform var(--transition);
+            backdrop-filter: blur(8px);
+        }
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateY(-3px);
+        }
+        .hero-visual {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            animation: fadeRight 1s 0.5s forwards;
+        }
+        .hero-device {
+            width: 340px;
+            height: 260px;
+            background: rgba(255, 255, 255, 0.06);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            border-radius: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            backdrop-filter: blur(10px);
+            position: relative;
+            overflow: hidden;
+        }
+        .hero-device::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, rgba(10, 108, 255, 0.15), transparent 60%);
+        }
+        .hero-icons-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 16px;
+            position: relative;
+            z-index: 1;
+            padding: 20px;
+        }
+        .hero-icon-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 6px;
+        }
+        .hero-icon-box {
+            width: 56px;
+            height: 56px;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.6rem;
+            transition: transform 0.3s;
+        }
+        .hero-icon-box:hover {
+            transform: scale(1.1);
+            background: rgba(10, 108, 255, 0.25);
+        }
+        .hero-icon-label {
+            font-size: 0.62rem;
+            color: rgba(255, 255, 255, 0.6);
+            font-weight: 500;
+            text-align: center;
+            white-space: nowrap;
+        }
+        .hero-stats {
+            display: flex;
+            gap: 2rem;
+            margin-top: 2.5rem;
+            opacity: 0;
+            animation: fadeUp 0.8s 0.8s forwards;
+        }
+        .hero-stat-num {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: #fff;
+        }
+        .hero-stat-label {
+            font-size: 0.78rem;
+            color: rgba(255, 255, 255, 0.55);
+            font-weight: 500;
+        }
+        .hero-stat-divider {
+            width: 1px;
+            background: rgba(255, 255, 255, 0.15);
+            align-self: stretch;
+        }
+        @keyframes fadeUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        @keyframes fadeRight {
+            from {
+                opacity: 0;
+                transform: translateX(40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        /* ============================================================
+           SECTION COMMON
+        ============================================================ */
+        section {
+            padding: 100px 0;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+        .section-label {
+            display: inline-block;
+            font-size: 0.75rem;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--blue);
+            background: var(--blue-light);
+            padding: 5px 14px;
+            border-radius: 50px;
+            margin-bottom: 1rem;
+        }
+        .section-title {
+            font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+            font-weight: 800;
+            color: var(--charcoal);
+            letter-spacing: -0.8px;
+            line-height: 1.15;
+            margin-bottom: 1rem;
+        }
+        .section-sub {
+            font-size: 1rem;
+            color: var(--gray);
+            max-width: 520px;
+            line-height: 1.7;
+        }
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+        .section-header .section-sub {
+            margin: 0 auto;
+        }
+
+        /* ============================================================
+           FEATURED PRODUCTS
+        ============================================================ */
+        #products {
+            background: #fff;
+        }
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
+            gap: 1.5rem;
+        }
+        .product-card {
+            background: var(--white);
+            border-radius: var(--radius);
+            border: 1px solid var(--gray-border);
+            overflow: hidden;
+            transition: transform var(--transition), box-shadow var(--transition);
+        }
+        .product-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 24px 60px rgba(10, 108, 255, 0.12);
+        }
+        .product-img {
+            height: 220px;
+            background: #ffffff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            transition: transform var(--transition);
+            position: relative;
+            padding: 10px;
+            cursor: pointer;
+        }
+        .product-img img {
+            max-height: 100%;
+            width: auto;
+            object-fit: contain;
+            transition: transform 0.4s ease;
+        }
+        .product-img:hover img {
+            transform: scale(1.04);
+        }
+        .product-badge {
+            position: absolute;
+            top: 12px;
+            left: 12px;
+            background: var(--blue);
+            color: #fff;
+            font-size: 0.7rem;
+            font-weight: 700;
+            padding: 3px 10px;
+            border-radius: 50px;
+            letter-spacing: 0.04em;
+            z-index: 2;
+            pointer-events: none;
+        }
+        .product-body {
+            padding: 1.4rem;
+        }
+        .product-brand {
+            font-size: 0.72rem;
+            color: var(--blue);
+            font-weight: 700;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+            margin-bottom: 5px;
+        }
+        .product-title {
+            font-size: 1rem;
+            font-weight: 700;
+            color: var(--charcoal);
+            margin-bottom: 6px;
+            line-height: 1.3;
+        }
+        .product-specs {
+            font-size: 0.8rem;
+            color: var(--gray);
+            margin-bottom: 1rem;
+            line-height: 1.5;
+        }
+        .product-footer {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .btn-view {
+            background: var(--blue-light);
+            color: var(--blue);
+            font-size: 0.82rem;
+            font-weight: 700;
+            padding: 8px 18px;
+            border-radius: 50px;
+            transition: background var(--transition), color var(--transition), transform var(--transition);
+        }
+        .btn-view:hover {
+            background: var(--blue);
+            color: #fff;
+            transform: scale(1.05);
+        }
+        .products-grid-extra {
+            display: none;
+            margin-top: 1.75rem;
+        }
+        .products-grid-extra.open {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
+            gap: 1.5rem;
+        }
+        .load-more-wrap {
+            display: flex;
+            justify-content: center;
+            margin-top: 2.5rem;
+        }
+        .btn-load-more {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: var(--blue);
+            color: #fff;
+            font-weight: 700;
+            font-size: 1rem;
+            padding: 15px 36px;
+            border-radius: 50px;
+            transition: background var(--transition), transform var(--transition), box-shadow var(--transition);
+            box-shadow: 0 4px 24px rgba(10, 108, 255, 0.35);
+        }
+        .btn-load-more:hover {
+            background: var(--blue-dark);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 36px rgba(10, 108, 255, 0.45);
+        }
+        .btn-load-more .chev {
+            transition: transform var(--transition);
+            display: inline-block;
+        }
+        .btn-load-more.is-open .chev {
+            transform: rotate(180deg);
+        }
+
+        /* ============================================================
+           WHY CHOOSE US
+        ============================================================ */
+        #why {
+            background: var(--gray-light);
+        }
+        .why-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 1.5rem;
+        }
+        .why-card {
+            background: var(--white);
+            border-radius: var(--radius);
+            padding: 2rem 1.75rem;
+            border: 1px solid var(--gray-border);
+            display: flex;
+            gap: 1.2rem;
+            transition: transform var(--transition), box-shadow var(--transition), border-color var(--transition);
+        }
+        .why-card:hover {
+            transform: translateY(-6px);
+            box-shadow: var(--shadow-md);
+            border-color: var(--blue);
+        }
+        .why-icon-box {
+            width: 48px;
+            height: 48px;
+            background: var(--blue-light);
+            border-radius: var(--radius-sm);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.4rem;
+            color: var(--blue);
+            flex-shrink: 0;
+        }
+        .why-content h3 {
+            font-size: 1.05rem;
+            font-weight: 700;
+            color: var(--charcoal);
+            margin-bottom: 6px;
+        }
+        .why-content p {
+            font-size: 0.88rem;
+            color: var(--gray);
+            line-height: 1.6;
+        }
+
+        /* ============================================================
+           BRANDS
+        ============================================================ */
+        #brands {
+            background: #fff;
+        }
+
+        /* ============================================================
+           VIDEO DEMONSTRATION (formerly AI Video)
+        ============================================================ */
+        #ai-video {
+            background: var(--gray-light);
+        }
+        .video-placeholder {
+            background: #fff;
+            border-radius: var(--radius);
+            padding: 2rem;
+            border: 2px dashed var(--blue);
+            text-align: center;
+            min-height: 400px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            box-shadow: var(--shadow-sm);
+            transition: border-color 0.3s, box-shadow 0.3s;
+        }
+        .video-placeholder:hover {
+            border-color: var(--blue-dark);
+            box-shadow: var(--shadow-md);
+        }
+        .video-wrapper {
+            width: 100%;
+            max-width: 800px;
+            aspect-ratio: 16 / 9;
+            background: #0a0f2e;
+            border-radius: var(--radius-sm);
+            overflow: hidden;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
+        }
+        .video-wrapper video {
+            width: 100%;
+            height: 100%;
+            display: block;
+            background: #000;
+        }
+
+        /* ============================================================
+           TESTIMONIALS
+        ============================================================ */
+        #testimonials {
+            background: var(--gray-light);
+        }
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+        .testi-card {
+            background: var(--white);
+            border-radius: var(--radius);
+            padding: 2rem;
+            border: 1px solid var(--gray-border);
+            transition: transform var(--transition), box-shadow var(--transition);
+            position: relative;
+        }
+        .testi-card:hover {
+            transform: translateY(-6px);
+            box-shadow: var(--shadow-md);
+        }
+        .testi-quote {
+            font-size: 3rem;
+            color: var(--blue-light);
+            line-height: 1;
+            font-family: Georgia, serif;
+            margin-bottom: 0.5rem;
+        }
+        .testi-text {
+            font-size: 0.9rem;
+            color: var(--gray);
+            line-height: 1.7;
+            margin-bottom: 1.5rem;
+        }
+        .testi-stars {
+            color: #f59e0b;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+        .testi-author {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .testi-avatar {
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background: var(--blue-light);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--blue);
+        }
+        .testi-info h4 {
+            font-size: 0.92rem;
+            font-weight: 700;
+            color: var(--charcoal);
+        }
+        .testi-info span {
+            font-size: 0.78rem;
+            color: var(--gray);
+        }
+
+        /* ============================================================
+           CONTACT
+        ============================================================ */
+        #contact {
+            background: #fff;
+        }
+        .contact-cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 3rem;
+        }
+        .contact-card {
+            background: var(--white);
+            border-radius: var(--radius);
+            padding: 1.75rem;
+            border: 1px solid var(--gray-border);
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            transition: transform var(--transition), box-shadow var(--transition), border-color var(--transition);
+        }
+        .contact-card:hover {
+            transform: translateY(-6px);
+            box-shadow: var(--shadow-md);
+            border-color: var(--blue);
+        }
+        .contact-card-icon {
+            width: 44px;
+            height: 44px;
+            background: var(--blue-light);
+            border-radius: var(--radius-sm);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.3rem;
+            color: var(--blue);
+        }
+        .contact-card-label {
+            font-size: 0.78rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            color: var(--gray);
+            letter-spacing: 0.05em;
+        }
+        .contact-card-value {
+            font-size: 1.2rem;
+            font-weight: 800;
+            color: var(--charcoal);
+            margin: 2px 0;
+            display: inline-block;
+        }
+        .contact-card-sub {
+            font-size: 0.8rem;
+            color: var(--gray);
+        }
+        .contact-card-action {
+            font-size: 0.88rem;
+            font-weight: 700;
+            color: var(--blue);
+            margin-top: auto;
+            display: inline-flex;
+            align-items: center;
+            transition: color 0.3s, transform 0.3s;
+        }
+        .contact-card-action:hover {
+            color: var(--blue-dark);
+            transform: translateX(4px);
+        }
+        .contact-layout {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: start;
+        }
+        .contact-map-card {
+            background: var(--white);
+            border: 1px solid var(--gray-border);
+            border-radius: var(--radius);
+            padding: 1.5rem;
+            box-shadow: var(--shadow-sm);
+        }
+        .address-display {
+            background: var(--gray-light);
+            border-radius: var(--radius-sm);
+            padding: 1.25rem;
+            margin-top: 1rem;
+            display: flex;
+            align-items: flex-start;
+            gap: 0.75rem;
+            border-left: 4px solid var(--blue);
+        }
+        .address-display .icon {
+            font-size: 1.3rem;
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+        .address-display .text {
+            font-size: 0.95rem;
+            color: var(--charcoal);
+            line-height: 1.6;
+            font-weight: 500;
+        }
+        .address-display .sub {
+            font-size: 0.8rem;
+            color: var(--gray);
+            font-weight: 400;
+            margin-top: 4px;
+        }
+        .contact-form-card {
+            background: var(--white);
+            border: 1px solid var(--gray-border);
+            border-radius: var(--radius);
+            padding: 2.5rem;
+            box-shadow: var(--shadow-md);
+        }
+        .contact-form {
+            display: flex;
+            flex-direction: column;
+            gap: 1.25rem;
+        }
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.25rem;
+        }
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+        .form-group label {
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--charcoal);
+        }
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            background: var(--gray-light);
+            border: 1px solid var(--gray-border);
+            padding: 12px 16px;
+            border-radius: var(--radius-sm);
+            font-family: inherit;
+            font-size: 0.92rem;
+            color: var(--charcoal);
+            transition: border-color 0.3s, background 0.3s, box-shadow 0.3s;
+        }
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--blue);
+            background: #fff;
+            box-shadow: 0 0 0 4px rgba(10, 108, 255, 0.12);
+        }
+        .btn-submit {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            width: 100%;
+            background: var(--blue);
+            color: #fff;
+            font-weight: 700;
+            font-size: 0.95rem;
+            padding: 14px;
+            border-radius: var(--radius-sm);
+            border: none;
+            transition: background var(--transition), transform var(--transition), box-shadow var(--transition);
+        }
+        .btn-submit:hover {
+            background: var(--blue-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 18px rgba(10, 108, 255, 0.4);
+        }
+        .contact-hours-banner {
+            margin-top: 2.5rem;
+            background: linear-gradient(135deg, #0a0f2e 0%, #0d1b5e 60%, #0A6CFF 100%);
+            border-radius: var(--radius);
+            padding: 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 1.5rem;
+            color: #fff;
+        }
+        .contact-hours-text h4 {
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin-bottom: 4px;
+        }
+        .contact-hours-text p {
+            font-size: 0.88rem;
+            color: rgba(255, 255, 255, 0.75);
+        }
+        .contact-hours-cta {
+            background: #25d366;
+            color: #fff;
+            font-weight: 700;
+            font-size: 0.92rem;
+            padding: 12px 24px;
+            border-radius: 50px;
+            white-space: nowrap;
+            transition: background 0.3s, transform 0.3s;
+        }
+        .contact-hours-cta:hover {
+            background: #20ba5a;
+            transform: translateY(-2px);
+        }
+
+        /* ============================================================
+           LIGHTBOX
+        ============================================================ */
+        .lightbox-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.88);
+            backdrop-filter: blur(12px);
+            z-index: 3000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.4s ease;
+            padding: 2rem;
+            cursor: zoom-out;
+        }
+        .lightbox-overlay.open {
+            opacity: 1;
+            pointer-events: all;
+        }
+        .lightbox-overlay img {
+            max-width: 90vw;
+            max-height: 85vh;
+            width: auto;
+            height: auto;
+            object-fit: contain;
+            border-radius: 8px;
+            box-shadow: 0 20px 80px rgba(0, 0, 0, 0.6);
+            transform: scale(0.85);
+            transition: transform 0.45s cubic-bezier(0.34, 1.56, 0.64, 1);
+            cursor: zoom-out;
+        }
+        .lightbox-overlay.open img {
+            transform: scale(1);
+        }
+        .lightbox-close {
+            position: fixed;
+            top: 1.5rem;
+            right: 2rem;
+            color: #fff;
+            font-size: 2.2rem;
+            font-weight: 300;
+            z-index: 3001;
+            cursor: pointer;
+            transition: transform 0.3s, opacity 0.3s;
+            opacity: 0;
+            pointer-events: none;
+            background: none;
+            border: none;
+            line-height: 1;
+        }
+        .lightbox-overlay.open .lightbox-close {
+            opacity: 1;
+            pointer-events: all;
+        }
+        .lightbox-close:hover {
+            transform: scale(1.15);
+            color: #0A6CFF;
+        }
+
+        /* ============================================================
+           FOOTER
+        ============================================================ */
+        footer {
+            background: #0a0f2e;
+            color: rgba(255, 255, 255, 0.65);
+            padding: 80px 0 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+        }
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr repeat(3, 1fr);
+            gap: 4rem;
+            margin-bottom: 4rem;
+        }
+        .footer-brand {
+            display: flex;
+            flex-direction: column;
+            gap: 1.25rem;
+        }
+        .footer-logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: #fff;
+        }
+        .footer-logo span {
+            color: var(--blue);
+        }
+        .footer-logo-icon {
+            width: 40px;
+            height: 40px;
+            background: var(--blue);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .footer-logo-icon svg {
+            width: 22px;
+            height: 22px;
+            fill: #fff;
+        }
+        .footer-brand p {
+            font-size: 0.9rem;
+            line-height: 1.6;
+        }
+        .footer-social {
+            display: flex;
+            gap: 0.75rem;
+        }
+        .social-btn {
+            width: 38px;
+            height: 38px;
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.1rem;
+            transition: background 0.3s, color 0.3s, border-color 0.3s;
+        }
+        .social-btn:hover {
+            background: var(--blue);
+            border-color: var(--blue);
+            color: #fff;
+        }
+        .footer-links-col h4 {
+            color: #fff;
+            font-size: 0.95rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            position: relative;
+        }
+        .footer-links-col ul {
+            display: flex;
+            flex-direction: column;
+            gap: 0.85rem;
+        }
+        .footer-links-col a {
+            font-size: 0.88rem;
+            transition: color 0.3s;
+        }
+        .footer-links-col a:hover {
+            color: #fff;
+        }
+        .footer-bottom {
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.06);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 1rem;
+            font-size: 0.82rem;
+        }
+        .footer-legal-links {
+            display: flex;
+            gap: 1.5rem;
+        }
+
+        /* ============================================================
+           BACK TO TOP
+        ============================================================ */
+        #back-to-top {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            width: 46px;
+            height: 46px;
+            background: var(--blue);
+            color: #fff;
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            box-shadow: 0 6px 20px rgba(10, 108, 255, 0.4);
+            cursor: pointer;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.3s, transform 0.3s, background 0.3s;
+            z-index: 500;
+            border: none;
+        }
+        #back-to-top.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        #back-to-top:hover {
+            background: var(--blue-dark);
+            transform: translateY(-3px);
+        }
+
+        /* ============================================================
+           WHATSAPP FLOAT
+        ============================================================ */
+        #wa-float {
+            position: fixed;
+            bottom: 5.5rem;
+            right: 2rem;
+            width: 50px;
+            height: 50px;
+            background: #25d366;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.6rem;
+            box-shadow: 0 6px 20px rgba(37, 211, 102, 0.4);
+            z-index: 500;
+            transition: transform 0.3s, background 0.3s;
+        }
+        #wa-float:hover {
+            background: #20ba5a;
+            transform: scale(1.08);
+        }
+
+        /* ============================================================
+           PRIVACY OVERLAY MODAL
+        ============================================================ */
+        .privacy-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(10, 15, 46, 0.6);
+            backdrop-filter: blur(8px);
+            z-index: 2000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.4s ease;
+            padding: 1.5rem;
+        }
+        .privacy-overlay.open {
+            opacity: 1;
+            pointer-events: all;
+        }
+        .privacy-modal {
+            background: #fff;
+            width: 100%;
+            max-width: 680px;
+            max-height: 80vh;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow-lg);
+            display: flex;
+            flex-direction: column;
+            transform: scale(0.9) translateY(30px);
+            transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+            overflow: hidden;
+            border: 1px solid var(--gray-border);
+        }
+        .privacy-overlay.open .privacy-modal {
+            transform: scale(1) translateY(0);
+        }
+        .privacy-header {
+            padding: 1.5rem 2rem;
+            border-bottom: 1px solid var(--gray-border);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .privacy-header h3 {
+            font-size: 1.2rem;
+            font-weight: 800;
+            color: var(--charcoal);
+        }
+        .privacy-close {
+            font-size: 1.5rem;
+            color: var(--gray);
+            transition: color 0.3s;
+        }
+        .privacy-close:hover {
+            color: var(--charcoal);
+        }
+        .privacy-body {
+            padding: 2rem;
+            overflow-y: auto;
+            font-size: 0.92rem;
+            color: #374151;
+            line-height: 1.65;
+        }
+        .privacy-body h4 {
+            font-size: 1rem;
+            font-weight: 700;
+            color: var(--charcoal);
+            margin: 1.5rem 0 0.5rem;
+        }
+        .privacy-body h4:first-child {
+            margin-top: 0;
+        }
+        .privacy-body p {
+            margin-bottom: 1rem;
+        }
+        .privacy-body ul {
+            padding-left: 1.25rem;
+            margin-bottom: 1rem;
+            list-style: cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .privacy-body li {
+            margin-bottom: 0.5rem;
+        }
+        .privacy-contact-box {
+            margin-top: 2rem;
+            background: var(--gray-light);
+            border: 1px solid var(--gray-border);
+            border-radius: var(--radius-sm);
+            padding: 1.25rem;
+        }
+        .privacy-contact-box h4 {
+            font-size: 0.95rem;
+            font-weight: 700;
+            color: var(--charcoal);
+            margin-bottom: 0.75rem;
+        }
+        .privacy-contact-box li {
+            display: flex;
+            gap: 8px;
+            font-size: 0.88rem;
+            margin-bottom: 5px;
+        }
+        body.modal-open {
+            overflow: hidden;
+        }
+
+        /* ============================================================
+           RESPONSIVE
+        ============================================================ */
+        @media (max-width: 1024px) {
+            .footer-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+        @media (max-width: 768px) {
+            section {
+                padding: 70px 0;
+            }
+            .hero-inner {
+                grid-template-columns: 1fr;
+                text-align: center;
+                gap: 2.5rem;
+                padding-top: 100px;
+            }
+            .hero-btns {
+                justify-content: center;
+            }
+            .hero-sub {
+                margin: 0 auto 2rem;
+            }
+            .hero-stats {
+                justify-content: center;
+            }
+            .hero-visual {
+                display: none;
+            }
+            .contact-cards-grid {
+                grid-template-columns: 1fr;
+            }
+            .contact-layout {
+                grid-template-columns: 1fr;
+                gap: 2.5rem;
+            }
+            .contact-hours-banner {
+                flex-direction: column;
+                text-align: center;
+            }
+            .footer-grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 2rem;
+            }
+            .footer-brand {
+                grid-column: 1 / -1;
+            }
+            #navbar {
+                padding: 0 1.5rem;
+            }
+            .nav-links {
+                display: none;
+            }
+            .hamburger {
+                display: flex;
+            }
+            .video-wrapper {
+                max-width: 100%;
+            }
+        }
+        @media (max-width: 480px) {
+            .form-row {
+                grid-template-columns: 1fr;
+                gap: 1.25rem;
+            }
+            .footer-grid {
+                grid-template-columns: 1fr;
+            }
+            .footer-bottom {
+                flex-direction: column;
+                text-align: center;
+            }
+            .lightbox-overlay {
+                padding: 1rem;
+            }
+            .lightbox-overlay img {
+                max-width: 98vw;
+                max-height: 75vh;
+            }
+            .lightbox-close {
+                top: 1rem;
+                right: 1.2rem;
+                font-size: 1.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ===== NAVBAR ===== -->
+    <nav id="navbar" aria-label="Main Navigation">
+        <div class="nav-brand">
+            <div class="nav-brand-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M12 2L2 7v10l10 5 10-5V7L12 2zm0 2.2l7.6 3.8L12 11.8 4.4 8 12 4.2zM4 9.7l7 3.5v6.6L4 16.3V9.7zm9 10.1v-6.6l7-3.5v6.6l-7 3.5z"/>
+                </svg>
+            </div>
+            Naeem <span>Traders</span>
+        </div>
+        <div class="nav-links">
+            <a href="#hero" class="active">Home</a>
+            <a href="#products">Products</a>
+            <a href="#why">Why Choose Us</a>
+            <a href="#ai-video">Video</a>   <!-- Changed from "AI Demo" to "Video" -->
+            <a href="#testimonials">Reviews</a>
+            <a href="#contact" class="nav-cta">Contact Desk</a>
+        </div>
+        <button id="hamburger-btn" class="hamburger" aria-label="Toggle navigation menu" aria-expanded="false">
+            <span></span><span></span><span></span>
+        </button>
+    </nav>
+
+    <div id="mobile-menu-element" class="mobile-menu">
+        <a href="#hero" onclick="toggleMobileMenu()">Home</a>
+        <a href="#products" onclick="toggleMobileMenu()">Products</a>
+        <a href="#why" onclick="toggleMobileMenu()">Why Choose Us</a>
+        <a href="#ai-video" onclick="toggleMobileMenu()">Video</a>   <!-- Changed from "AI Demo" to "Video" -->
+        <a href="#testimonials" onclick="toggleMobileMenu()">Reviews</a>
+        <a href="#contact" onclick="toggleMobileMenu()">Contact Desk</a>
+    </div>
+
+    <!-- ===== HERO ===== -->
+    <section id="hero" aria-label="Introduction banner">
+        <div class="hero-bg">
+            <div class="hero-grid-line"></div>
+            <div class="hero-shape"></div>
+            <div class="hero-shape"></div>
+            <div class="hero-shape"></div>
+            <div class="hero-shape"></div>
+        </div>
+        <div class="container">
+            <div class="hero-inner">
+                <div>
+                    <span class="hero-badge">Premium Home Appliances</span>
+                    <h1 class="hero-title">Upgrade Your Home With <span>Naeem Traders</span></h1>
+                    <p class="hero-sub">Authorized Haier retail point supplying genuine products, competitive market rates, rapid delivery, and direct deployment for every home appliance need.</p>
+                    <div class="hero-btns">
+                        <a href="#products" class="btn-primary">Shop Now ↓</a>
+                        <a href="#contact" class="btn-secondary">📞 Get in Touch</a>
+                    </div>
+                    <div class="hero-stats">
+                        <div class="hero-stat-item">
+                            <div class="hero-stat-num" data-target="5000" data-suffix="+">5000+</div>
+                            <div class="hero-stat-label">Happy Customers</div>
+                        </div>
+                        <div class="hero-stat-divider"></div>
+                        <div class="hero-stat-item">
+                            <div class="hero-stat-num" data-target="10" data-suffix="+">10+</div>
+                            <div class="hero-stat-label">Years Experience</div>
+                        </div>
+                        <div class="hero-stat-divider"></div>
+                        <div class="hero-stat-item">
+                            <div class="hero-stat-num" data-target="100" data-suffix="+">100+</div>
+                            <div class="hero-stat-label">Products</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="hero-visual" aria-hidden="true">
+                    <div class="hero-device">
+                        <div class="hero-icons-grid">
+                            <div class="hero-icon-item"><div class="hero-icon-box">🧊</div><div class="hero-icon-label">Refrigerator</div></div>
+                            <div class="hero-icon-item"><div class="hero-icon-box">❄️</div><div class="hero-icon-label">AC</div></div>
+                            <div class="hero-icon-item"><div class="hero-icon-box">📺</div><div class="hero-icon-label">Smart TV</div></div>
+                            <div class="hero-icon-item"><div class="hero-icon-box">🫗</div><div class="hero-icon-label">Deep Freezer</div></div>
+                            <div class="hero-icon-item"><div class="hero-icon-box">🍽️</div><div class="hero-icon-label">Microwave</div></div>
+                            <div class="hero-icon-item"><div class="hero-icon-box">🫧</div><div class="hero-icon-label">Washer</div></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== PRODUCTS ===== -->
+    <section id="products" aria-label="Featured Products">
+        <div class="container">
+            <div class="section-header reveal">
+                <span class="section-label">Our Inventory</span>
+                <h2 class="section-title">Genuine Appliances</h2>
+                <p class="section-sub">Straight from your sent catalog sheets. Select your desired premium model below to inquire about current price cards and immediate home shipping status.</p>
+            </div>
+
+            <div class="products-grid">
+
+                <!-- 1. Alpine LED TV -->
+                <div class="product-card reveal-zoom d1">
+                    <div class="product-img" onclick="openLightbox(this.querySelector('img'))">
+                        <img src="/Alpine LED TV.jpeg" alt="Alpine LED TV">
+                        <span class="product-badge">Click to expand</span>
+                    </div>
+                    <div class="product-body">
+                        <div class="product-brand">Alpine</div>
+                        <h3 class="product-title">Alpine LED TV</h3>
+                        <p class="product-specs">55-inch Ultra HD Smart LED TV · Built-in Android OS · Dolby Audio · 3 HDMI Ports · USB Media Playback · Slim Bezel Design · Wi-Fi & Ethernet.</p>
+                        <div class="product-footer">
+                            <button class="btn-view" onclick="scrollToContact()">Inquire Price</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 2. Dawlance Cook-King Microwave -->
+                <div class="product-card reveal-zoom d2">
+                    <div class="product-img" onclick="openLightbox(this.querySelector('img'))">
+                        <img src="/Dawlance Cook-King.jpeg" alt="Dawlance Cook-King Microwave">
+                        <span class="product-badge">Click to expand</span>
+                    </div>
+                    <div class="product-body">
+                        <div class="product-brand">Dawlance</div>
+                        <h3 class="product-title">Dawlance Cook-King Microwave</h3>
+                        <p class="product-specs">32 Liter Digital Microwave Oven · 900W Power Output · 10 Power Levels · Auto Cook Menus · Child Safety Lock · Stainless Steel Interior · Grill Function.</p>
+                        <div class="product-footer">
+                            <button class="btn-view" onclick="scrollToContact()">Inquire Price</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 3. Dawlance LVS Mirror Glass Door -->
+                <div class="product-card reveal-zoom d3">
+                    <div class="product-img" onclick="openLightbox(this.querySelector('img'))">
+                        <img src="/Dawlance LVS Mirror Glass Door.jpeg" alt="Dawlance LVS Mirror Glass Door Refrigerator">
+                        <span class="product-badge">Click to expand</span>
+                    </div>
+                    <div class="product-body">
+                        <div class="product-brand">Dawlance</div>
+                        <h3 class="product-title">Dawlance LVS Mirror Glass Door</h3>
+                        <p class="product-specs">18 Cubic Feet Frost-Free Refrigerator · Mirror Glass Door Design · Digital Inverter Technology · LED Display · Multi Air Flow System · Energy Efficient.</p>
+                        <div class="product-footer">
+                            <button class="btn-view" onclick="scrollToContact()">Inquire Price</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 4. Electrolux Fridge -->
+                <div class="product-card reveal-zoom d4">
+                    <div class="product-img" onclick="openLightbox(this.querySelector('img'))">
+                        <img src="/Electrolux.jpeg" alt="Electrolux Refrigerator">
+                        <span class="product-badge">Click to expand</span>
+                    </div>
+                    <div class="product-body">
+                        <div class="product-brand">Electrolux</div>
+                        <h3 class="product-title">Electrolux Fridge</h3>
+                        <p class="product-specs">20 Cubic Feet Side-by-Side Refrigerator · Twin Inverter Technology · T-ABT Anti-Bacterial Protection · Glass Shelves · Ice & Water Dispenser · LED Lighting.</p>
+                        <div class="product-footer">
+                            <button class="btn-view" onclick="scrollToContact()">Inquire Price</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 5. Haier Clear System -->
+                <div class="product-card reveal-zoom d5">
+                    <div class="product-img" onclick="openLightbox(this.querySelector('img'))">
+                        <img src="/Haier Clear System.jpeg" alt="Haier Clear System Deep Freezer">
+                        <span class="product-badge">Click to expand</span>
+                    </div>
+                    <div class="product-body">
+                        <div class="product-brand">Haier</div>
+                        <h3 class="product-title">Haier Clear System</h3>
+                        <p class="product-specs">245 Liters Chest Freezer · High-Efficiency Cooling · Heavy Copper Evaporator · 100 Hours Freeze Retention · Energy Saver Technology · Digital Control.</p>
+                        <div class="product-footer">
+                            <button class="btn-view" onclick="scrollToContact()">Inquire Price</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 6. Haier Digital Inverter -->
+                <div class="product-card reveal-zoom d6">
+                    <div class="product-img" onclick="openLightbox(this.querySelector('img'))">
+                        <img src="/Haier Digital Inverter.jpeg" alt="Haier Digital Inverter Deep Freezer">
+                        <span class="product-badge">Click to expand</span>
+                    </div>
+                    <div class="product-body">
+                        <div class="product-brand">Haier</div>
+                        <h3 class="product-title">Haier Digital Inverter</h3>
+                        <p class="product-specs">325 Liters Chest Freezer · Smart Inverter Technology · Convertible Mode (Refrigerator/Freezer) · Reinforced Top Panel · Energy Efficient · LED Display.</p>
+                        <div class="product-footer">
+                            <button class="btn-view" onclick="scrollToContact()">Inquire Price</button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- ===== EXTRA PRODUCTS (hidden initially) ===== -->
+            <div class="products-grid-extra" id="productsExtra">
+
+                <!-- 7. Haier Energy Star -->
+                <div class="product-card reveal-zoom d1">
+                    <div class="product-img" onclick="openLightbox(this.querySelector('img'))">
+                        <img src="/Haier Energy Star.jpeg" alt="Haier Energy Star Deep Freezer">
+                        <span class="product-badge">Click to expand</span>
+                    </div>
+                    <div class="product-body">
+                        <div class="product-brand">Haier</div>
+                        <h3 class="product-title">Haier Energy Star</h3>
+                        <p class="product-specs">385 Liters Double Door Freezer · Independent Access Doors · Dual Temperature Zones · Jumbo Storage Capacity · Energy Star Certified · Heavy Duty Compressor.</p>
+                        <div class="product-footer">
+                            <button class="btn-view" onclick="scrollToContact()">Inquire Price</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 8. Haier Fresh Air System -->
+                <div class="product-card reveal-zoom d2">
+                    <div class="product-img" onclick="openLightbox(this.querySelector('img'))">
+                        <img src="/Haier Fresh Air System.jpeg" alt="Haier Fresh Air System Air Conditioner">
+                        <span class="product-badge">Click to expand</span>
+                    </div>
+                    <div class="product-body">
+                        <div class="product-brand">Haier</div>
+                        <h3 class="product-title">Haier Fresh Air System</h3>
+                        <p class="product-specs">1.5 Ton Inverter AC · Fresh Air Technology · Anti-Bacterial Filter · Turbo Cooling · Smart Remote Control · Energy Efficient · Sleep Mode.</p>
+                        <div class="product-footer">
+                            <button class="btn-view" onclick="scrollToContact()">Inquire Price</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 9. Haier Smart Home Microwave Oven -->
+                <div class="product-card reveal-zoom d3">
+                    <div class="product-img" onclick="openLightbox(this.querySelector('img'))">
+                        <img src="/Haier Smart Home MIcro Wave Oven.jpeg" alt="Haier Smart Home Microwave Oven">
+                        <span class="product-badge">Click to expand</span>
+                    </div>
+                    <div class="product-body">
+                        <div class="product-brand">Haier</div>
+                        <h3 class="product-title">Haier Smart Home Microwave Oven</h3>
+                        <p class="product-specs">25 Liter Digital Microwave · Smart Sensor Cooking · 10 Auto Menus · Grill Function · Child Lock · Stainless Steel Finish · Defrost & Reheat Modes.</p>
+                        <div class="product-footer">
+                            <button class="btn-view" onclick="scrollToContact()">Inquire Price</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 10. Haier Inverter Fridge -->
+                <div class="product-card reveal-zoom d4">
+                    <div class="product-img" onclick="openLightbox(this.querySelector('img'))">
+                        <img src="/Haier Smart Inverter Fridge.jpeg" alt="Haier Inverter Refrigerator">
+                        <span class="product-badge">Click to expand</span>
+                    </div>
+                    <div class="product-body">
+                        <div class="product-brand">Haier</div>
+                        <h3 class="product-title">Haier Inverter Fridge</h3>
+                        <p class="product-specs">16 Cubic Feet Frost-Free Refrigerator · Smart Inverter Technology · Digital Display · Multi Air Flow · LED Lighting · Anti-Bacterial Protection.</p>
+                        <div class="product-footer">
+                            <button class="btn-view" onclick="scrollToContact()">Inquire Price</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 11. Haier SpotLessly Clean -->
+                <div class="product-card reveal-zoom d5">
+                    <div class="product-img" onclick="openLightbox(this.querySelector('img'))">
+                        <img src="/Haier Spotlessly Clean.jpeg" alt="Haier SpotLessly Clean Washing Machine">
+                        <span class="product-badge">Click to expand</span>
+                    </div>
+                    <div class="product-body">
+                        <div class="product-brand">Haier</div>
+                        <h3 class="product-title">Haier SpotLessly Clean</h3>
+                        <p class="product-specs">9.0 KG Fully Automatic Washing Machine · Stainless Steel Drum · Fuzzy Logic Control · Soft Closing Lid · Multiple Wash Programs · Child Lock.</p>
+                        <div class="product-footer">
+                            <button class="btn-view" onclick="scrollToContact()">Inquire Price</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 12. Kenwood Hydro Wash -->
+                <div class="product-card reveal-zoom d6">
+                    <div class="product-img" onclick="openLightbox(this.querySelector('img'))">
+                        <img src="/Kenwood Hydrowash.jpeg" alt="Kenwood Hydro Wash Washing Machine">
+                        <span class="product-badge">Click to expand</span>
+                    </div>
+                    <div class="product-body">
+                        <div class="product-brand">Kenwood</div>
+                        <h3 class="product-title">Kenwood Hydro Wash</h3>
+                        <p class="product-specs">8.0 KG Semi-Automatic Washing Machine · Hydro Wash Technology · Stainless Steel Drum · Dual Wash System · Spin Dryer · Energy Efficient Motor.</p>
+                        <div class="product-footer">
+                            <button class="btn-view" onclick="scrollToContact()">Inquire Price</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 13. Dawlance Microwave Model Dw-142 -->
+                <div class="product-card reveal-zoom d7">
+                    <div class="product-img" onclick="openLightbox(this.querySelector('img'))">
+                        <img src="/Microwave model dw-142.jpeg" alt="Dawlance Microwave Model Dw-142">
+                        <span class="product-badge">Click to expand</span>
+                    </div>
+                    <div class="product-body">
+                        <div class="product-brand">Dawlance</div>
+                        <h3 class="product-title">Dawlance Microwave Model Dw-142</h3>
+                        <p class="product-specs">30 Liter Digital Microwave Oven · 800W Power Output · 6 Auto Cook Menus · Defrost Function · Child Safety Lock · Turntable · Stainless Steel Interior.</p>
+                        <div class="product-footer">
+                            <button class="btn-view" onclick="scrollToContact()">Inquire Price</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 14. Smart TV -->
+                <div class="product-card reveal-zoom d8">
+                    <div class="product-img" onclick="openLightbox(this.querySelector('img'))">
+                        <img src="/Smart TV.jpeg" alt="Smart TV">
+                        <span class="product-badge">Click to expand</span>
+                    </div>
+                    <div class="product-body">
+                        <div class="product-brand">Smart TV</div>
+                        <h3 class="product-title">Smart TV</h3>
+                        <p class="product-specs">50-inch 4K Ultra HD Smart TV · Android TV OS · Dolby Vision · HDR10+ · Built-in Chromecast · 3 HDMI · 2 USB · Voice Remote.</p>
+                        <div class="product-footer">
+                            <button class="btn-view" onclick="scrollToContact()">Inquire Price</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 15. Super Asia ECM 4700 Cool Plug Master -->
+                <div class="product-card reveal-zoom d1">
+                    <div class="product-img" onclick="openLightbox(this.querySelector('img'))">
+                        <img src="/super asia ecm 4700 cool plug master.jpeg" alt="Super Asia ECM 4700 Cool Plug Master">
+                        <span class="product-badge">Click to expand</span>
+                    </div>
+                    <div class="product-body">
+                        <div class="product-brand">Super Asia</div>
+                        <h3 class="product-title">Super Asia ECM 4700 Cool Plug Master</h3>
+                        <p class="product-specs">1.5 Ton Window AC · Cool Plug Master Technology · Anti-Bacterial Filter · Energy Saver · Remote Control · 4700W Cooling Capacity · Low Noise Operation.</p>
+                        <div class="product-footer">
+                            <button class="btn-view" onclick="scrollToContact()">Inquire Price</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 16. Westpoint Professional Kitchen Chef -->
+                <div class="product-card reveal-zoom d2">
+                    <div class="product-img" onclick="openLightbox(this.querySelector('img'))">
+                        <img src="/WestPoint Professional Kitchen chef.jpeg" alt="Westpoint Professional Kitchen Chef">
+                        <span class="product-badge">Click to expand</span>
+                    </div>
+                    <div class="product-body">
+                        <div class="product-brand">Westpoint</div>
+                        <h3 class="product-title">Westpoint Professional Kitchen Chef</h3>
+                        <p class="product-specs">1500W Professional Kitchen Chef · 6 Speed Settings · Stainless Steel Mixing Bowl · Dough Hook · Whisk Attachment · Pulse Function · 5 Liter Capacity.</p>
+                        <div class="product-footer">
+                            <button class="btn-view" onclick="scrollToContact()">Inquire Price</button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="load-more-wrap reveal">
+                <button class="btn-load-more" id="loadMoreBtn" onclick="toggleMoreProducts()" aria-live="polite">
+                    <span id="loadMoreLabel">View All Products</span>
+                    <span class="chev" aria-hidden="true">↓</span>
+                </button>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- ===== WHY CHOOSE US ===== -->
+    <section id="why" aria-label="Store value pillars">
+        <div class="container">
+            <div class="section-header reveal">
+                <span class="section-label">Why Choose Us</span>
+                <h2 class="section-title">The Retail Standard</h2>
+                <p class="section-sub">We combine authorized factory guarantees with dedicated support to make buying appliances completely stress-free.</p>
+            </div>
+            <div class="why-grid">
+                <div class="why-card reveal-zoom d1">
+                    <div class="why-icon-box" aria-hidden="true">🛡️</div>
+                    <div class="why-content">
+                        <h3>Official Warranty</h3>
+                        <p>Every single product brings an official direct manufacturer warranty card stamped right from Haier Pakistan's factory line.</p>
+                    </div>
+                </div>
+                <div class="why-card reveal-zoom d2">
+                    <div class="why-icon-box" aria-hidden="true">🚚</div>
+                    <div class="why-content">
+                        <h3>Rapid Fleet Setup</h3>
+                        <p>We handle safe transit logistics and offer quick on-site deployment setups using official company guidelines.</p>
+                    </div>
+                </div>
+                <div class="why-card reveal-zoom d3">
+                    <div class="why-icon-box" aria-hidden="true">💬</div>
+                    <div class="why-content">
+                        <h3>Personalized Service</h3>
+                        <p>Skip cold automated help lines. Talk to our retail desk directly on phone or chat to assist you at every step.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== BRANDS ===== -->
+    <section id="brands" aria-label="Brand partners">
+        <div class="container">
+            <div class="section-header reveal">
+                <span class="section-label">Our Brand</span>
+                <h2 class="section-title">Authorized Haier Dealer</h2>
+                <p class="section-sub">We are an official authorized dealer of Haier — one of the world's largest and most trusted home appliance brands.</p>
+            </div>
+            <div class="reveal" style="background:linear-gradient(135deg,#0a0f2e 0%,#0d1b5e 60%,#0A6CFF 100%);border-radius:20px;padding:3rem 2.5rem;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:2rem;margin-bottom:2rem;">
+                <div>
+                    <div style="font-size:0.75rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:#7bb3ff;margin-bottom:0.75rem;">Official Authorized Dealer</div>
+                    <div style="font-size:clamp(2.5rem,6vw,4rem);font-weight:900;color:#fff;letter-spacing:-2px;line-height:1;">HAIER</div>
+                    <div style="font-size:0.9rem;color:rgba(255,255,255,0.6);margin-top:0.5rem;">World's No.1 Major Appliances Brand</div>
+                    <div style="display:flex;gap:1.5rem;margin-top:1.5rem;flex-wrap:wrap;">
+                        <div style="text-align:center;">
+                            <div style="font-size:1.4rem;font-weight:800;color:#fff;">100+</div>
+                            <div style="font-size:0.72rem;color:rgba(255,255,255,0.55);">Haier Products</div>
+                        </div>
+                        <div style="width:1px;background:rgba(255,255,255,0.15);align-self:stretch;"></div>
+                        <div style="text-align:center;">
+                            <div style="font-size:1.4rem;font-weight:800;color:#fff;">100%</div>
+                            <div style="font-size:0.72rem;color:rgba(255,255,255,0.55);">Genuine Units</div>
+                        </div>
+                    </div>
+                </div>
+                <div style="background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);padding:1.5rem 2rem;border-radius:14px;max-width:340px;">
+                    <p style="font-size:0.88rem;color:rgba(255,255,255,0.8);line-height:1.6;">"Buying from an authorized channel guarantees genuine product builds, accurate retail pricing, and straightforward technical support coverage."</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== VIDEO DEMONSTRATION (formerly AI Video) ===== -->
+    <section id="ai-video" aria-label="Video Demonstration">
+        <div class="container">
+            <div class="section-header reveal">
+                <span class="section-label">Video</span>   <!-- Changed from "AI Demo" to "Video" -->
+                <h2 class="section-title">Product Demonstration</h2>
+                <p class="section-sub">Watch our product video to see how our appliances perform in real-world use.</p>
+            </div>
+            <div class="video-placeholder reveal">
+                <div class="video-wrapper">
+                    <!-- Directly embed the video file ad.mp4 -->
+                    <video controls>
+                        <source src="ad.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== TESTIMONIALS ===== -->
+    <section id="testimonials" aria-label="Customer feedback section">
+        <div class="container">
+            <div class="section-header reveal">
+                <span class="section-label">Verified Testimonials</span>
+                <h2 class="section-title">What Our Clients Say</h2>
+                <p class="section-sub">Read genuine testimonials left directly by community households using our store configurations.</p>
+            </div>
+            <div class="testimonials-grid reveal">
+                <div class="testi-card">
+                    <div class="testi-quote" aria-hidden="true">“</div>
+                    <p class="testi-text">Completely seamless workflow. Got my Haier Inverter AC configured safely within hours of calling. Stamped factory warranty sheets look highly professional.</p>
+                    <div class="testi-stars">★★★★★</div>
+                    <div class="testi-author">
+                        <div class="testi-avatar">ZM</div>
+                        <div class="testi-info"><h4>Zain Malik</h4><span>Karachi, Pakistan</span></div>
+                    </div>
+                </div>
+                <div class="testi-card">
+                    <div class="testi-quote" aria-hidden="true">“</div>
+                    <p class="testi-text">Their sales support desk quote beat out standard physical showrooms on Tariq Road instantly. Delivery layout was managed perfectly and safely.</p>
+                    <div class="testi-stars">★★★★★</div>
+                    <div class="testi-author">
+                        <div class="testi-avatar">AA</div>
+                        <div class="testi-info"><h4>Asad Ahmed</h4><span>Karachi, Pakistan</span></div>
+                    </div>
+                </div>
+                <div class="testi-card">
+                    <div class="testi-quote" aria-hidden="true">“</div>
+                    <p class="testi-text">We process heavy bulk appliance purchases for apartment properties, and Naeem Traders handles technical tracking effortlessly. Excellent pricing lines.</p>
+                    <div class="testi-stars">★★★★★</div>
+                    <div class="testi-author">
+                        <div class="testi-avatar">FM</div>
+                        <div class="testi-info"><h4>Fahad Malik</h4><span>Karachi, Pakistan</span></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== CONTACT ===== -->
+    <section id="contact" aria-label="Contact us">
+        <div class="container">
+            <div class="section-header reveal">
+                <span class="section-label">Get In Touch</span>
+                <h2 class="section-title">Call or Visit Us</h2>
+                <p class="section-sub">We're always ready to help you find the perfect appliance. Reach out directly — our team responds instantly.</p>
+            </div>
+
+            <!-- Contact Cards — only 2 phone cards, email removed -->
+            <div class="contact-cards-grid">
+                <!-- Card 1: Main Phone → WhatsApp -->
+                <div class="contact-card reveal-zoom d1">
+                    <div class="contact-card-icon" aria-hidden="true">📞</div>
+                    <div>
+                        <div class="contact-card-label">Main Phone</div>
+                        <a href="https://wa.me/923432095665" target="_blank" rel="noopener noreferrer" class="contact-card-value">0343 2095665</a>
+                        <div class="contact-card-sub">Available Mon–Sat, 9AM–9PM</div>
+                    </div>
+                    <a href="https://wa.me/923432095665" target="_blank" rel="noopener noreferrer" class="contact-card-action" aria-label="Chat on WhatsApp">💬 Chat on WhatsApp →</a>
+                </div>
+
+                <!-- Card 2: Landline → WhatsApp -->
+                <div class="contact-card reveal-zoom d2">
+                    <div class="contact-card-icon" aria-hidden="true">☎️</div>
+                    <div>
+                        <div class="contact-card-label">Landline</div>
+                        <a href="https://wa.me/923453128437" target="_blank" rel="noopener noreferrer" class="contact-card-value">0345 3128437</a>
+                        <div class="contact-card-sub">Store Desk Operations</div>
+                    </div>
+                    <a href="https://wa.me/923453128437" target="_blank" rel="noopener noreferrer" class="contact-card-action" aria-label="Chat on WhatsApp">💬 Chat on WhatsApp →</a>
+                </div>
+            </div>
+
+            <div class="contact-layout">
+                <div class="contact-map-card reveal-left">
+                    <div style="font-weight:700;margin-bottom:0.75rem;color:var(--charcoal);">📍 Store Location</div>
+                    <!-- Address updated to new location -->
+                    <p style="font-size:0.95rem;font-weight:500;color:var(--charcoal);margin-bottom:0.25rem;">R.197 sector 15/b</p>
+                    <p style="font-size:0.88rem;color:var(--gray);margin-bottom:1rem;line-height:1.5;">Opposite Al Habib restaurant, near Nagan Chorangi, Karachi, Pakistan</p>
+                    <!-- Removed map iframe since exact location couldn't be verified -->
+                    <div class="address-display">
+                        <span class="icon">📍</span>
+                        <div>
+                            <div class="text">R.197 sector 15/b, Opposite Al Habib restaurant, near Nagan Chorangi</div>
+                            <div class="sub">Karachi, Pakistan — Map unavailable, please contact us for directions.</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="contact-form-card reveal-right">
+                    <form class="contact-form" onsubmit="handleFormSubmit(event)">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="form-name">Your Full Name *</label>
+                                <input id="form-name" type="text" placeholder="e.g. Zain Malik" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="form-phone">Phone Number *</label>
+                                <input id="form-phone" type="tel" placeholder="e.g. 03001234567" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="form-product">Appliance Category *</label>
+                            <select id="form-product" required>
+                                <option value="" disabled selected>Select an option</option>
+                                <option value="refrigerator">Haier Refrigerator Lineup</option>
+                                <option value="ac">Air Conditioner System</option>
+                                <option value="tv">4K Android Smart TV Panel</option>
+                                <option value="washing-machine">Washing Machine / Washer</option>
+                                <option value="other">Kitchen Ovens / Others</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="form-msg">Detailed Request Notes *</label>
+                            <textarea id="form-msg" rows="4" placeholder="Mention product model details, price verification requests or target delivery location specifics..." required></textarea>
+                        </div>
+                        <button type="submit" class="btn-submit">Submit Inquiry Form →</button>
+                    </form>
+                </div>
+            </div>
+
+            <div class="contact-hours-banner reveal">
+                <div class="contact-hours-text">
+                    <h4>Looking for Immediate Live Support?</h4>
+                    <p>Our sales support grid operates actively on text chat. Click the float button or connect directly for immediate operational status updates.</p>
+                </div>
+                <a href="https://wa.me/923432095665" target="_blank" rel="noopener noreferrer" class="contact-hours-cta">💬 Chat on WhatsApp</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== FOOTER ===== -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <div class="footer-logo">
+                        <div class="footer-logo-icon">
+                            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M12 2L2 7v10l10 5 10-5V7L12 2zm0 2.2l7.6 3.8L12 11.8 4.4 8 12 4.2zM4 9.7l7 3.5v6.6L4 16.3V9.7zm9 10.1v-6.6l7-3.5v6.6l-7 3.5z"/>
+                            </svg>
+                        </div>
+                        Naeem <span>Traders</span>
+                    </div>
+                    <p>Your trusted electronics destination since 2016. Genuine products, competitive prices, expert installation, and outstanding after-sales service.</p>
+                   
+                </div>
+                <div class="footer-links-col">
+                    <h4>Product Assortments</h4>
+                    <ul>
+                        <li><a href="#products">Inverter Refrigerators</a></li>
+                        <li><a href="#products">Air Conditioning Blocks</a></li>
+                        <li><a href="#products">4K Android Smart Panels</a></li>
+                        <li><a href="#products">Washing Equipment Arrays</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links-col">
+                    <h4>Corporate Core</h4>
+                    <ul>
+                        <li><a href="#why">Why Choose Us</a></li>
+                        <li><a href="#testimonials">Client Testimonials</a></li>
+                        <li><a href="#contact">Direct Retail Desk</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links-col">
+                    <h4>Operational Line</h4>
+                    <ul>
+                        <li style="font-size:0.85rem;line-height:1.5;">R.197 sector 15/b,<br>Opposite Al Habib restaurant, near Nagan Chorangi, Karachi</li>
+                        <li style="font-size:0.85rem;margin-top:6px;">Mon–Sat: 9:00 AM – 9:00 PM</li>
+                        <li style="font-size:0.85rem;color:#25d366;">Sun: Closed (WhatsApp Open)</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <div>© 2026 Naeem Traders. All rights reserved. Registered Authorized Retail Channel.</div>
+                <div class="footer-legal-links">
+                    <a href="javascript:void(0)" onclick="openPrivacy()">Privacy Policy & Warranties</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ===== BACK TO TOP ===== -->
+    <button id="back-to-top" onclick="scrollToTop()" aria-label="Scroll back to top">↑</button>
+
+    <!-- ===== WHATSAPP FLOAT ===== -->
+    <a href="https://wa.me/923432095665" id="wa-float" target="_blank" rel="noopener noreferrer" aria-label="Chat on WhatsApp">💬</a>
+
+    <!-- ===== LIGHTBOX ===== -->
+    <div id="lightboxOverlay" class="lightbox-overlay" onclick="closeLightbox(event)">
+        <button class="lightbox-close" id="lightboxClose" aria-label="Close image">✕</button>
+        <img id="lightboxImg" src="" alt="Expanded product view" />
+    </div>
+
+    <!-- ===== PRIVACY OVERLAY ===== -->
+    <div id="privacyModalOverlay" class="privacy-overlay" onclick="closePrivacyOverlay(event)">
+        <div class="privacy-modal">
+            <div class="privacy-header">
+                <h3>Privacy Policy & Stamped Warranties</h3>
+                <button class="privacy-close" onclick="closePrivacy()">×</button>
+            </div>
+            <div class="privacy-body">
+                <h4>1. Warranty Authentication</h4>
+                <p>All home appliances supplied through our showroom points carry a 100% genuine stamped product registry card linked directly into official factory system frameworks.</p>
+                <h4>2. Operational Field Collection</h4>
+                <p>Inquiry field metrics populated inside our portal system layout coordinates are systematically handled over secured encryption and used only to process inventory deliveries.</p>
+                <h4>3. Absolute Protection</h4>
+                <p>We strictly enforce strict information protocols. We do not sell, rent, or trade your personal information to third parties for marketing purposes.</p>
+                <div class="privacy-contact-box">
+                    <h4>📞 Contact Us</h4>
+                    <ul>
+                        <li>📧 <a href="mailto:info@naeemtraders.pk">info@naeemtraders.pk</a></li>
+                        <li>📞 <a href="https://wa.me/923432095665" target="_blank">+92 343 209 5665 (WhatsApp)</a></li>
+                        <li>📍 R.197 sector 15/b, Opposite Al Habib restaurant, near Nagan Chorangi, Karachi</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        (function() {
+            'use strict';
+
+            /* ---- Navbar scroll ---- */
+            var navbar = document.getElementById('navbar');
+
+            function onScroll() {
+                var y = window.scrollY;
+                if (y > 60) {
+                    navbar.classList.add('scrolled');
+                } else {
+                    navbar.classList.remove('scrolled');
+                }
+                var btt = document.getElementById('back-to-top');
+                if (y > 400) btt.classList.add('show');
+                else btt.classList.remove('show');
+            }
+            window.addEventListener('scroll', onScroll, { passive: true });
+
+            /* ---- Mobile Menu ---- */
+            var hmb = document.getElementById('hamburger-btn');
+            var mm = document.getElementById('mobile-menu-element');
+            if (hmb && mm) {
+                hmb.addEventListener('click', function() {
+                    var open = hmb.classList.toggle('open');
+                    mm.classList.toggle('open', open);
+                    hmb.setAttribute('aria-expanded', open);
+                });
+            }
+            window.toggleMobileMenu = function() {
+                if (hmb && mm) {
+                    hmb.classList.remove('open');
+                    mm.classList.remove('open');
+                    hmb.setAttribute('aria-expanded', 'false');
+                }
+            };
+
+            /* ---- Intersection Observer for Reveal ---- */
+            var revealElements = document.querySelectorAll('.reveal, .reveal-left, .reveal-right, .reveal-zoom');
+            if ('IntersectionObserver' in window) {
+                var obs = new IntersectionObserver(function(entries, observer) {
+                    entries.forEach(function(entry) {
+                        if (entry.isIntersecting) {
+                            entry.target.classList.add('visible');
+                            observer.unobserve(entry.target);
+                        }
+                    });
+                }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+                revealElements.forEach(function(el) { obs.observe(el); });
+            } else {
+                revealElements.forEach(function(el) { el.classList.add('visible'); });
+            }
+
+            /* ---- Counter Animation ---- */
+            var statNums = document.querySelectorAll('.hero-stat-num');
+            if ('IntersectionObserver' in window && statNums.length > 0) {
+                var countObs = new IntersectionObserver(function(entries, observer) {
+                    entries.forEach(function(entry) {
+                        if (entry.isIntersecting) {
+                            animateCounter(entry.target);
+                            observer.unobserve(entry.target);
+                        }
+                    });
+                }, { threshold: 0.5 });
+                statNums.forEach(function(el) { countObs.observe(el); });
+            } else {
+                statNums.forEach(function(el) {
+                    el.textContent = el.getAttribute('data-target') + (el.getAttribute('data-suffix') || '');
+                });
+            }
+
+            function animateCounter(el) {
+                var target = parseFloat(el.getAttribute('data-target'));
+                var suffix = el.getAttribute('data-suffix') || '';
+                var duration = 1600;
+                var startTime = null;
+
+                function step(timestamp) {
+                    if (!startTime) startTime = timestamp;
+                    var progress = Math.min((timestamp - startTime) / duration, 1);
+                    var eased = progress === 1 ? 1 : 1 - Math.pow(2, -10 * progress);
+                    if (target % 1 !== 0) {
+                        el.textContent = (eased * target).toFixed(1) + suffix;
+                    } else {
+                        el.textContent = Math.floor(eased * target) + suffix;
+                    }
+                    if (progress < 1) {
+                        window.requestAnimationFrame(step);
+                    }
+                }
+                window.requestAnimationFrame(step);
+            }
+
+            /* ---- Helpers ---- */
+            window.scrollToProducts = function() {
+                var p = document.getElementById('products');
+                if (p) p.scrollIntoView({ behavior: 'smooth' });
+            };
+            window.scrollToContact = function() {
+                var c = document.getElementById('contact');
+                if (c) c.scrollIntoView({ behavior: 'smooth' });
+            };
+            window.scrollToTop = function() {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            };
+
+            /* ---- Inquiry Form ---- */
+            window.handleFormSubmit = function(e) {
+                e.preventDefault();
+                var name = document.getElementById('form-name').value.trim();
+                var phone = document.getElementById('form-phone').value.trim();
+                var cat = document.getElementById('form-product').value;
+                var msg = document.getElementById('form-msg').value.trim();
+                if (!name || !phone || !cat || !msg) {
+                    alert('Please fill out all active fields correctly.');
+                    return;
+                }
+                var fullText = "Assalam-o-Alaikum Naeem Traders,\n\nI want to inquire about an appliance:\n• Name: " + name +
+                    "\n• Contact: " + phone + "\n• Category: " + cat + "\n• Message: " + msg;
+                var waUrl = "https://wa.me/923432095665?text=" + encodeURIComponent(fullText);
+                window.open(waUrl, '_blank', 'noopener,noreferrer');
+            };
+
+            /* ---- Lightbox ---- */
+            var lightboxOverlay = document.getElementById('lightboxOverlay');
+            var lightboxImg = document.getElementById('lightboxImg');
+            var lightboxClose = document.getElementById('lightboxClose');
+
+            window.openLightbox = function(imgElement) {
+                if (!imgElement) return;
+                var src = imgElement.getAttribute('src');
+                if (!src) return;
+                lightboxImg.setAttribute('src', src);
+                lightboxImg.setAttribute('alt', imgElement.getAttribute('alt') || 'Product image');
+                lightboxOverlay.classList.add('open');
+                document.body.classList.add('modal-open');
+            };
+
+            window.closeLightbox = function(e) {
+                if (e && e.target !== e.currentTarget && e.target !== lightboxClose) return;
+                lightboxOverlay.classList.remove('open');
+                document.body.classList.remove('modal-open');
+                setTimeout(function() {
+                    if (!lightboxOverlay.classList.contains('open')) {
+                        lightboxImg.removeAttribute('src');
+                    }
+                }, 400);
+            };
+
+            lightboxClose.addEventListener('click', function(e) {
+                e.stopPropagation();
+                closeLightbox(e);
+            });
+
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape' && lightboxOverlay.classList.contains('open')) {
+                    closeLightbox(e);
+                }
+            });
+
+            /* ---- Privacy ---- */
+            var privacyOverlay = document.getElementById('privacyModalOverlay');
+            window.openPrivacy = function() {
+                if (privacyOverlay) {
+                    privacyOverlay.classList.add('open');
+                    document.body.classList.add('modal-open');
+                }
+            };
+            window.closePrivacy = function() {
+                if (privacyOverlay) {
+                    privacyOverlay.classList.remove('open');
+                    document.body.classList.remove('modal-open');
+                }
+            };
+            window.closePrivacyOverlay = function(e) {
+                if (e.target === privacyOverlay) closePrivacy();
+            };
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape' && privacyOverlay && privacyOverlay.classList.contains('open')) closePrivacy();
+            });
+
+            /* ---- Load more ---- */
+            window.toggleMoreProducts = function() {
+                var extra = document.getElementById('productsExtra');
+                var btn = document.getElementById('loadMoreBtn');
+                var label = document.getElementById('loadMoreLabel');
+                if (!extra || !btn || !label) return;
+                var isOpen = extra.classList.toggle('open');
+                btn.classList.toggle('is-open', isOpen);
+                var cards = extra.querySelectorAll('.product-card');
+                if (isOpen) {
+                    label.textContent = 'Show Fewer Products';
+                    cards.forEach(function(card, i) {
+                        card.classList.remove('visible');
+                        setTimeout(function() { card.classList.add('visible'); }, 45 * i);
+                    });
+                } else {
+                    label.textContent = 'View All Products';
+                    cards.forEach(function(card) { card.classList.remove('visible'); });
+                    document.getElementById('products').scrollIntoView({ behavior: 'smooth' });
+                }
+            };
+
+            /* ---- Smooth anchor clicks ---- */
+            document.querySelectorAll('a[href^="#"]').forEach(function(a) {
+                a.addEventListener('click', function(e) {
+                    var target = document.querySelector(a.getAttribute('href'));
+                    if (target) {
+                        e.preventDefault();
+                        target.scrollIntoView({ behavior: 'smooth' });
+                    }
+                });
+            });
+
+        })();
+    </script>
+
+</body>
+</html>
